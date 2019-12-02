@@ -66,7 +66,7 @@ public class Game {
         renders.add(new Render(0, 0, "resources/flappy/background.png"));
         for (Pipe pipe : pipes)
             renders.add(pipe.getRender());
-        renders.add(new Render(0, 0, "resources/flappy/foreground.png"));
+//        renders.add(new Render(0, 0, "resources/flappy/foreground.png"));
         renders.add(bird.getRender());
         return renders;
     }
