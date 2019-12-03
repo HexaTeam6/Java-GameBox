@@ -27,8 +27,3 @@ public class Pacman extends JFrame {
             ex.setVisible(true);
         });
     }
-}package id.ac.its.mahmud.pacman;
-
-public class Pacman {
-
-}
