@@ -27,3 +27,4 @@ public class Pacman extends JFrame {
             ex.setVisible(true);
         });
     }
+}
