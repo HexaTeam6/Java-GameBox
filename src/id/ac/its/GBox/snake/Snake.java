@@ -357,7 +357,7 @@ public class Snake extends JPanel implements Runnable {
    public void paintComponent(Graphics gg) {
       super.paintComponent(gg);
       Graphics2D g = (Graphics2D) gg;
-      background = new ImageIcon("src/resources/grass.png");
+      background = new ImageIcon("resources/snake/grass.png");
       background.paintIcon(this, g, 0, 0);
       //kukomen ga ngefek, yaudah
       //setOpaque(false);
