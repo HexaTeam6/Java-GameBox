@@ -199,7 +199,7 @@ public class Board extends JPanel implements ActionListener {
             if (!a.isDying()) {
                 a.move();
 
-                int shot = generator.nextInt(15);
+//                int shot = generator.nextInt(15);
                 Alien.Bomb bomb = a.getBomb();
 
                 if (bomb.isDestroyed()) {
@@ -213,7 +213,7 @@ public class Board extends JPanel implements ActionListener {
                     bomb.setX(bomb.getX() - 3);
 
                     if (bomb.getX() >= 400 - 5) {
-                        System.out.println("a");
+//                        System.out.println("a");
                         bomb.setDestroyed(true);
                     }
                 }

@@ -3,9 +3,9 @@ package id.ac.its.GBox.spaceship;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
-public class CollisionEx extends JFrame {
+public class SpaceShipPlay extends JFrame {
 
-    public CollisionEx() {
+    public SpaceShipPlay() {
 
         initUI();
     }
@@ -25,7 +25,7 @@ public class CollisionEx extends JFrame {
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            CollisionEx ex = new CollisionEx();
+            SpaceShipPlay ex = new SpaceShipPlay();
             ex.setVisible(true);
         });
     }
