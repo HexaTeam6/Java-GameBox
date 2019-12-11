@@ -6,35 +6,35 @@ public class Brick extends Sprite {
 
     private boolean destroyed;
 
-    public Brick(int x, int y) {
+    public Brick(int x, int y) {					
 
-        initBrick(x, y);
+        initBrick(x, y);											//menginisiasi bata
     }
 
     private void initBrick(int x, int y) {
 
-        this.x = x;
-        this.y = y;
+        this.x = x;													//panjang	
+        this.y = y;													//lebar
 
-        destroyed = false;
+        destroyed = false;											//belum hancur
 
-        loadImage();
-        getImageDimensions();
+        loadImage();												//menjalankan fungsi loadimage
+        getImageDimensions();										//fungsi ukuran gambar
     }
 
     private void loadImage() {
 
-        var ii = new ImageIcon("resources/breakout/brick.png");
-        image = ii.getImage();
+        var ii = new ImageIcon("resources/breakout/brick.png");		//load gambar dari direktori
+        image = ii.getImage();										
     }
 
-    boolean isDestroyed() {
+    boolean isDestroyed() {											//bool hancur
 
-        return destroyed;
+        return destroyed;											//return kondisi menjadi hancur
     }
 
-    void setDestroyed(boolean val) {
+    void setDestroyed(boolean val) {								//kondisi hancur/belum
 
-        destroyed = val;
+        destroyed = val;											//set nilai variable
     }
 }

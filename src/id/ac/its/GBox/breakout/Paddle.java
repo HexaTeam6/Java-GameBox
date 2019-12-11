@@ -30,12 +30,12 @@ public class Paddle extends Sprite  {
 
         x += dx;
 
-        if (x <= 0) {
+        if (x <= 0) {												//mentok kiri
 
             x = 0;
         }
 
-        if (x >= Commons.WIDTH - imageWidth) {
+        if (x >= Commons.WIDTH - imageWidth) {						//mentok kanan
 
             x = Commons.WIDTH - imageWidth;
         }
@@ -45,19 +45,21 @@ public class Paddle extends Sprite  {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
-
-            dx = -1;
+        if (key == KeyEvent.VK_LEFT) {								//gerak ke kiri
+        	
+            dx = -5;
+            
         }
 
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_RIGHT) {								//gerak ke kanan
 
-            dx = 1;
+            dx = 5;
+
         }
     }
 
-    void keyReleased(KeyEvent e) {
-
+    void keyReleased(KeyEvent e) {									//tidak memencet tombol
+    																//tidak melakukan apa-apa
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
@@ -71,9 +73,9 @@ public class Paddle extends Sprite  {
         }
     }
 
-    private void resetState() {
+    private void resetState() {										//kondisi posisi awal papan pemantul
 
-        x = Commons.INIT_PADDLE_X;
+        x = Commons.INIT_PADDLE_X;							
         y = Commons.INIT_PADDLE_Y;
     }
 }
