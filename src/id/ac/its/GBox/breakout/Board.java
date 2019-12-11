@@ -200,7 +200,7 @@ public class Board extends JPanel {
 
             if (ballLPos >= second && ballLPos < third) {					//perkenaan di area >=second dan <third
 
-                ball.setXDir(0);											//arah pantul bola lurus keatas, tidak dipengaruhi sumbu x
+                ball.setXDir(1 * ball.getXDir());											//arah pantul bola lurus keatas, tidak dipengaruhi sumbu x
                 ball.setYDir(-1);											//arah pantul bola ke atas
             }
 
@@ -208,7 +208,7 @@ public class Board extends JPanel {
 
                 ball.setXDir(1);											//arah pantul bola mengikuti arah datang sumbu x ke kanan
                 ball.setYDir(-1 * ball.getYDir());							//arah pantul bola ke atas * besarnya
-//                System.out.println(ball.getYDir());
+                															//System.out.println(ball.getYDir());
             }
 
             if (ballLPos > fourth) {										//perkenaan di area <fourth
@@ -227,30 +227,30 @@ public class Board extends JPanel {
                 int ballWidth = (int) ball.getRect().getWidth();				//sisi bawah
                 int ballTop = (int) ball.getRect().getMinY();					//sisi atas
 
-                var pointRight = new Point(ballLeft + ballWidth + 1, ballTop);		
-                var pointLeft = new Point(ballLeft - 1, ballTop);
-                var pointTop = new Point(ballLeft, ballTop - 1);
-                var pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);	
+                var pointRight = new Point(ballLeft + ballWidth + 1, ballTop);		//permukaan kanan bola
+                var pointLeft = new Point(ballLeft - 1, ballTop);					//permukaan kiri bola
+                var pointTop = new Point(ballLeft, ballTop - 1);					//permukaan atas bola
+                var pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);	//permukaan bawah bola
 
-                if (!bricks[i].isDestroyed()) {
+                if (!bricks[i].isDestroyed()) {										//jika belum hancur bata-nya
 
-                    if (bricks[i].getRect().contains(pointRight)) {
+                    if (bricks[i].getRect().contains(pointRight)) {					//kena kanan bola
 
-                        ball.setXDir(-1);
-                    } else if (bricks[i].getRect().contains(pointLeft)) {
+                        ball.setXDir(-1);											//arah pantulan bola ke kiri
+                    } else if (bricks[i].getRect().contains(pointLeft)) {			//kena kiri bola
 
-                        ball.setXDir(1);
+                        ball.setXDir(1);											//arah pantulan bola ke kanan
                     }
 
-                    if (bricks[i].getRect().contains(pointTop)) {
+                    if (bricks[i].getRect().contains(pointTop)) {					//kena atas bola
 
-                        ball.setYDir(1);
-                    } else if (bricks[i].getRect().contains(pointBottom)) {
+                        ball.setYDir(1);											//arah pantulan bola ke bawah
+                    } else if (bricks[i].getRect().contains(pointBottom)) {			//kena bawah bola
 
-                        ball.setYDir(-1);
+                        ball.setYDir(-1);											//arah pantulan bola ke atas
                     }
 
-                    bricks[i].setDestroyed(true);
+                    bricks[i].setDestroyed(true);									//bata hancur
                 }
             }
         }
