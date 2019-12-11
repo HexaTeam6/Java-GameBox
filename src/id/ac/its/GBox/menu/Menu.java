@@ -1,5 +1,6 @@
 package id.ac.its.GBox.menu;
 
+import id.ac.its.GBox.breakout.Breakout;
 import id.ac.its.GBox.snake.Snake;
 import id.ac.its.GBox.spaceship.SpaceShipPlay;
 
@@ -33,8 +34,11 @@ public class Menu extends JFrame {
        
        pongButton.addActionListener(new ActionListener() {
     	   public void actionPerformed(ActionEvent event) {
-       
-       
+               EventQueue.invokeLater(() -> {
+
+                   var game = new Breakout();
+                   game.setVisible(true);
+               });
     	   }
        });
        spaceButton.addActionListener(new ActionListener() {

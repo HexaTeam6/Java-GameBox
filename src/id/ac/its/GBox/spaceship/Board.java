@@ -27,6 +27,7 @@ public class Board extends JPanel implements ActionListener {
     private final int B_WIDTH = 400;
     private final int B_HEIGHT = 300;
     private final int DELAY = 15;
+    private int score;
 
     private String explImg = "resources/SpaceInvaders/explosion.png";
 
@@ -123,6 +124,7 @@ public class Board extends JPanel implements ActionListener {
 
         g.setColor(Color.WHITE);
         g.drawString("Aliens left: " + aliens.size(), 5, 15);
+        g.drawString("Score: " + score, 90, 15);
     }
 
     private void drawGameOver(Graphics g) {
@@ -285,6 +287,7 @@ public class Board extends JPanel implements ActionListener {
                     var ii = new ImageIcon(explImg);
                     alien.setImage(ii.getImage());
                     alien.setDying(true);
+                    score+=10;
                 }
             }
         }
