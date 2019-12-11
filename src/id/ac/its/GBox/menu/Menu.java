@@ -1,5 +1,6 @@
 package id.ac.its.GBox.menu;
 
+import id.ac.its.GBox.snake.Snake;
 import id.ac.its.GBox.spaceship.SpaceShipPlay;
 
 import javax.swing.*;
@@ -46,7 +47,21 @@ public class Menu extends JFrame {
        });
        snakeButton.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent event) {
-
+               SwingUtilities.invokeLater(
+                       () -> {
+                           JFrame mainFrame = new JFrame();
+                           mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                           //judul
+                           mainFrame.setTitle("Snake");
+                           //biar gabisa fullscreen
+                           mainFrame.setResizable(false);
+                           mainFrame.add(new Snake(), BorderLayout.CENTER);
+                           mainFrame.pack();
+                           //pas ku komen ga ditengah
+                           mainFrame.setLocationRelativeTo(null);
+                           //biar keliatan
+                           mainFrame.setVisible(true);
+                       });
           }
        });
        
