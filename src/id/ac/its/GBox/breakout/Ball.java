@@ -6,7 +6,7 @@ public class Ball extends Sprite {
 
     private int xdir;
     private int ydir;
-
+    
     public Ball() {
 
         initBall();
@@ -42,9 +42,6 @@ public class Ball extends Sprite {
         														//kalau menyentuh pojok kanan arena
         if (x == Commons.WIDTH - imageWidth) {
 
-        														//cek 
-        														//System.out.println(ball.getYDir());
-        														//System.out.println(Commons.WIDTH);
             setXDir(-1);										//ke kiri
         }
 

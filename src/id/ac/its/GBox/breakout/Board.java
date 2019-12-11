@@ -2,6 +2,9 @@ package id.ac.its.GBox.breakout;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import static java.lang.String.format;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -24,20 +27,22 @@ public class Board extends JPanel {
     private Paddle paddle;					//inisiasi variabel papan pemantul
     private Brick[] bricks;					//inisiasi variabel kotak bata yang akan dihancurkan
     private boolean inGame = true;			//inisiasi dimulainya game
-
+    private int score=0, hiScore;
+    Font smallFont;
+    
     public Board() {
 
-        initBoard(); // menjalankan fungsi untuk menginisiasi class board arena utama
+        initBoard(); 													// menjalankan fungsi untuk menginisiasi class board arena utama
     }
 
     private void initBoard() {
 
-        addKeyListener(new TAdapter()); //fungsi agar bisa menggunakan input tombol dari keyboard
-        setFocusable(true);				//fungsi untuk memfokuskan peran tombol perintah
+        addKeyListener(new TAdapter()); 								//fungsi agar bisa menggunakan input tombol dari keyboard
+        setFocusable(true);												//fungsi untuk memfokuskan peran tombol perintah
         
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT)); //fungsi untuk mengatur panjang dan lebar arena
-
-        gameInit(); //fungsi untuk menginisiasi game
+//       setBackground(Color.black);
+        gameInit(); 													//fungsi untuk menginisiasi game
     }
 
     private void gameInit() {
@@ -45,7 +50,7 @@ public class Board extends JPanel {
         bricks = new Brick[Commons.N_OF_BRICKS];	//membuat bata dari array
         ball = new Ball();							//menjalankan fungsi bola
         paddle = new Paddle();						//menjalankan fungsi papan pemantul
-
+ 	   	
         int k = 0;									//menyusun bata dari array of integer
 
         for (int i = 0; i < 5; i++) {
@@ -57,11 +62,20 @@ public class Board extends JPanel {
             }
         }
 
-        timer = new Timer(Commons.PERIOD, new GameCycle()); //fungsi untuk mengatur waktu
-//        System.out.println(Commons.PERIOD);
-        timer.start(); 								//memulai timer
+        timer = new Timer(Commons.PERIOD, new GameCycle()); 	//fungsi untuk mengatur waktu
+        														//System.out.println(Commons.PERIOD);
+        timer.start(); 											//memulai timer
     }
 
+    void drawScore(Graphics2D g) {
+        int h = getHeight();
+        g.setFont(smallFont);
+        g.setColor(Color.black);
+        String s = format("Hi-Score: %d    Score: %d", hiScore, score);
+        g.drawString(s, 30, h - 30);
+        
+     }
+    
     @Override
     public void paintComponent(Graphics g) {					//menggambar komponen
         super.paintComponent(g);								//super constructor
@@ -77,7 +91,7 @@ public class Board extends JPanel {
         if (inGame) {											//jika masih inGame
 
             drawObjects(g2d);									//menjalankan fungsi menggambar objek
-            
+            drawScore(g2d);
         } else {												
 
             gameFinished(g2d);									//fungsi game berakhir
@@ -193,20 +207,23 @@ public class Board extends JPanel {
 
             if (ballLPos >= first && ballLPos < second) {					//perkenaan di area >=first dan <second
 
-                ball.setXDir(-1);											//arah pantul bola ke kiri
+            	if(ball.getXDir()>0) ball.setXDir(-1 * ball.getXDir());		//arah pantul bola mengikuti arah datang sumbu x
+            	else ball.setXDir(ball.getXDir());											
                 ball.setYDir(-1 * ball.getYDir());							//arah pantul bola ke atas * besarnya 
 
             }
 
             if (ballLPos >= second && ballLPos < third) {					//perkenaan di area >=second dan <third
 
-                ball.setXDir(1 * ball.getXDir());											//arah pantul bola lurus keatas, tidak dipengaruhi sumbu x
+            	if(ball.getXDir()>0) ball.setXDir(-1 * ball.getXDir());		//arah pantul bola mengikuti arah datang sumbu x
+            	else ball.setXDir(ball.getXDir());							
                 ball.setYDir(-1);											//arah pantul bola ke atas
             }
 
             if (ballLPos >= third && ballLPos < fourth) {					//perkenaan di area >=third dan <fourth
 
-                ball.setXDir(1);											//arah pantul bola mengikuti arah datang sumbu x ke kanan
+            	if(ball.getXDir()>0) ball.setXDir(-1 * ball.getXDir());		//arah pantul bola mengikuti arah datang sumbu x
+            	else ball.setXDir(ball.getXDir());
                 ball.setYDir(-1 * ball.getYDir());							//arah pantul bola ke atas * besarnya
                 															//System.out.println(ball.getYDir());
             }
@@ -251,6 +268,9 @@ public class Board extends JPanel {
                     }
 
                     bricks[i].setDestroyed(true);									//bata hancur
+                    score++;
+                    if (score > hiScore)
+               		   hiScore = score;
                 }
             }
         }

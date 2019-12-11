@@ -24,15 +24,16 @@ public class Menu extends JFrame {
 
        JButton snakeButton = new JButton("Snake Game");
        JButton spaceButton = new JButton("Space Invader");
-       JButton pongButton = new JButton("Pong Game");
-       pongButton.setBounds(20, 10, 580, 185);
+       JButton bmButton = new JButton("Breakout Mantap");
+       
+       bmButton.setBounds(20, 10, 580, 185);
        spaceButton.setBounds(20, 210, 580, 180);
        snakeButton.setBounds(20, 410, 580, 180);
        snakeButton.setIcon(new ImageIcon("resources/menu/snakebutton.png"));
        spaceButton.setIcon(new ImageIcon("resources/menu/spacebutton.png"));
-       pongButton.setIcon(new ImageIcon("resources/menu/pongbutton.png"));
+       bmButton.setIcon(new ImageIcon("resources/menu/pongbutton.png"));
        
-       pongButton.addActionListener(new ActionListener() {
+       bmButton.addActionListener(new ActionListener() {
     	   public void actionPerformed(ActionEvent event) {
                EventQueue.invokeLater(() -> {
 
@@ -69,7 +70,7 @@ public class Menu extends JFrame {
           }
        });
        
-       panel.add(pongButton);
+       panel.add(bmButton);
        panel.add(spaceButton);
        panel.add(snakeButton);
 
