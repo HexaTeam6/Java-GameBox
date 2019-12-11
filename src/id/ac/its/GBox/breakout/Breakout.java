@@ -3,17 +3,17 @@ package id.ac.its.GBox.breakout;
 import javax.swing.JFrame;
 import java.awt.EventQueue;
 
-public class Breakout extends JFrame {
+public class Breakout extends JFrame { 				//mainapp
 
     public Breakout() {
 
-        initUI();
+        initUI();									//fungsi init
     }
 
     private void initUI() {
 
-        add(new Board());
-        setTitle("Breakout");
+        add(new Board());							//membuat board arena
+        setTitle("Breakout Mantap");				//menambahkan judul 
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

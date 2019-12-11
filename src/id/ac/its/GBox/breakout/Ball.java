@@ -35,12 +35,17 @@ public class Ball extends Sprite {
 
         if (x == 0) {
 
+//        	System.out.println(imageWidth);
             setXDir(1);
         }
 
+//      kalau menyentuh pojok kanan arena
         if (x == Commons.WIDTH - imageWidth) {
 
-//            System.out.println(imageWidth);
+//        	 cek 
+//        	System.out.println(ball.getYDir());
+
+//        	 System.out.println(Commons.WIDTH);
             setXDir(-1);
         }
 
